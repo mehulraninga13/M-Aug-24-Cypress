@@ -30,7 +30,7 @@ export class registerPage{
 
         cy.get(this.weblocators.email).type(email)
     }
-    enterTelephone(phoneNo){
+    enterTelephone(phoneNo){    
 
         cy.get(this.weblocators.telephone).type(phoneNo)
     }

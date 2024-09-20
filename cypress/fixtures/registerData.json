@@ -1,7 +1,7 @@
 {
     "firstName":"QA",
-    "lastName":"One",
-    "email":"qa.one@yopmail.com",
+    "lastName":"Two",
+    "email":"qa.two@yopmail.com",
     "telephone":"1234567890",
     "password":"Cypress@123"
 }
