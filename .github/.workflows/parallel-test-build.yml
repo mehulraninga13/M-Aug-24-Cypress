@@ -13,6 +13,12 @@ jobs:
         with:
           command: npm run test:addToCart
 
+      - name: Cypress Test Report Add to Cart
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Mochawesome HTML Report
+          path: cypress/reports/html 
+
   Reg-Flow-run:
     runs-on: Makbook Air
     steps:
@@ -24,3 +30,10 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npm run test:registerFlow
+
+      - name: Cypress Test Report Reg Flow
+        if: always()
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Mochawesome HTML Report
+          path: cypress/reports/html 

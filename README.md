@@ -67,6 +67,10 @@ Then to setup yml file go to this link https://github.com/cypress-io/github-acti
 Copy the github action code as per your requirement. For exampel End to End Testing
 
 
+Now to upload report in github 
+Go to google and search  upload artifact github actions and go to https://github.com/actions/upload-artifact
+
+
 
 
 
