@@ -1,0 +1,22 @@
+{
+
+    "login":
+    {
+
+        "username":"qa.two@yopmail.com",
+        "password":"Cypress@123"
+    },
+    "product":
+    {
+
+        "productName":"MacBook"
+    },
+
+    "message":
+    {
+
+        "SucessMessage":" Success: You have added MacBook to your shopping cart!"
+    }
+
+
+}

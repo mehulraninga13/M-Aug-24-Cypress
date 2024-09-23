@@ -29,5 +29,39 @@ Now create describe block and It block and start scription.
 
 Run the comand cypress open and select your test to check.
 Enter command git status to check what file you have made chagnes
+To add all the file in git enter the command git add . (If you want to add specif file you can add file name after . )
+Now to commit enter the command git commit -m "Any Message"
+git push by using this command all your local machin code will puch to the remot server. 
+
+Create command in command.js file for login which we uswaly require in all tc.
+
+Create another .js fiel under pages called Homepage.js 
+Create class and setup all the elements there. 
+Create another test data file in fisture called TestData01.json.
+Create Add to cart file in e2e -test with cy.js extension to call all the methods. 
+
+To run the file headleass moad user the command npx cypress run.
+
+Now to run the file by script go to package.json and in script create your won script to run specific file.
+So I have created script to run specific test as bellow 
+ "scripts": {
+    "test:addToCart":"npx cypress run --spec cypress/e2e/tests/addToCart.cy.js",
+ }
+ Now to run this I need to run the command in terminal npm run test:addToCart
+
+ Generate custom HTML report Mochawesome report.
+ Go to offecial website https://www.npmjs.com/package/cypress-mochawesome-reporter
+ First step is we need to instal mochawesome report by this command. npm i --save-dev cypress-mochawesome-reporter
+ Now you can verify in package.json file new dependency will be added "cypress-mochawesome-reporter": "^3.8.2"
+ Now in cypress.config.js file need to add configration that already provided by mochawesome. 
+ reporter: 'cypress-mochawesome-reporter',
+ require('cypress-mochawesome-reporter/plugin')(on);
+ Now you need to import this in your e2e.js package file. import 'cypress-mochawesome-reporter/register';
+ To generate report you just need to run your test. Report folder will be created in cypress. 
+ 
+
+
+
+
 
 

@@ -4,6 +4,7 @@
   "description": "Demonstrate the cypress framework.",
   "main": "index.js",
   "scripts": {
+    "test:addToCart": "npx cypress run --spec cypress/e2e/tests/addToCart.cy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/mehulraninga13/M-Aug-24-Cypress#readme",
   "devDependencies": {
-    "cypress": "^13.14.1"
+    "@testing-library/cypress": "^10.0.2",
+    "cypress": "^13.14.1",
+    "cypress-mochawesome-reporter": "^3.8.2"
   },
   "dependencies": {
     "aggregate-error": "^3.1.0",

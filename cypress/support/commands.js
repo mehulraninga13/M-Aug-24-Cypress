@@ -30,4 +30,13 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
 })
 
+Cypress.Commands.add('login',(email,password)=>{
+
+    cy.visit("https://naveenautomationlabs.com/opencart/index.php?route=account/login")
+    cy.get('#input-email').type(email)
+    cy.get('#input-password').type(password)
+    cy.get("input.btn.btn-primary").click()
+
+})
+
 

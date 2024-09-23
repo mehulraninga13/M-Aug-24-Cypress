@@ -3,6 +3,7 @@ import { registerPage } from "../../pages/registerPage"
 const regesterObj = new registerPage()
 import registerData from '../../fixtures/registerData.json'
 
+
 describe('test automation', ()=>{
 
 
