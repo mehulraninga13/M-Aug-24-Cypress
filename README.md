@@ -58,8 +58,13 @@ So I have created script to run specific test as bellow
  require('cypress-mochawesome-reporter/plugin')(on);
  Now you need to import this in your e2e.js package file. import 'cypress-mochawesome-reporter/register';
  To generate report you just need to run your test. Report folder will be created in cypress. 
- 
 
+Create directri in git hub by using this command. mkdir .github
+Then go to the github directory by cd .github
+Now create one more direcotry in git hub mkdir workflows
+Now in workflow create yml file build.yml
+Then to setup yml file go to this link https://github.com/cypress-io/github-action
+Copy the github action code as per your requirement. For exampel End to End Testing
 
 
 
