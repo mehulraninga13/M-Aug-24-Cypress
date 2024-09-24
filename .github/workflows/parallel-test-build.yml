@@ -14,7 +14,7 @@ jobs:
           command: npm run addToCart
 
       - name: Cypress Test Report Add to Cart
-      - uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: Mochawesome HTML Report
           path: cypress/reports/html 
@@ -33,7 +33,7 @@ jobs:
 
       - name: Cypress Test Report Reg Flow
         if: always()
-      - uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: Mochawesome HTML Report
           path: cypress/reports/html 
