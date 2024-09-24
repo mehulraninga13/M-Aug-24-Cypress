@@ -1,20 +1,41 @@
 name: Sanity Build
+
 on: push
+
 jobs:
   cypress-run:
-    runs-on: Mac
+    runs-on: macos-latest # Correct syntax for MacOS runner
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Ensure Node.js version is specified (adjust as needed)
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Add to Cart
         uses: cypress-io/github-action@v6
         with:
-          command: npm run addToCart
+          command: npm run addToCart # Ensure the 'addToCart' script is defined in package.json
 
-      - name: Cypress Test Report
+      - name: Generate Mochawesome Report
+        run: npm run addToCart # Ensure you have a posttest script that generates the report
+
+      - name: Upload Cypress Test Report
         uses: actions/upload-artifact@v4
         with:
           name: Mochawesome HTML Report
-          path: cypress/reports/html  
+          path: cypress/reports/html

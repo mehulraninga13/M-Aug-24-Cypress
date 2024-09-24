@@ -1,12 +1,24 @@
-name: Regression End-to-end tests
+name: Regression End-to-End Tests
+
 on: push
+
 jobs:
   cypress-run:
-    runs-on: Mac
+    runs-on: Ubantu-latest 
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' 
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v6
+        with:
+          command: npm run 

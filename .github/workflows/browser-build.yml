@@ -1,14 +1,25 @@
 name: Browser Test Build
+
 on: push
+
 jobs:
   cypress-run:
-    runs-on: Mac
+    runs-on: Ubantu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Specify Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests on Firefox
         uses: cypress-io/github-action@v6
         with:
-          browser: firerfox
+          browser: firefox # Corrected the browser name
+          command: npm run 
