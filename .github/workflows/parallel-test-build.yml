@@ -1,4 +1,4 @@
-name: Browser Test Build
+name: Multiple Jobs - On Demand Job
 
 on: 
   workflow_dispatch:

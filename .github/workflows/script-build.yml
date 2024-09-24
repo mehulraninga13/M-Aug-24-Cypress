@@ -1,6 +1,7 @@
-name: Sanity Build
+name: Script jobs - on demand
 
-on: push
+on: 
+  workflow_dispatch:
 
 jobs:
   cypress-run:

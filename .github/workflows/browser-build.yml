@@ -1,7 +1,7 @@
-name: Browser Test Build
+name: Browser Test Build 
 
 on: push
-
+  
 jobs:
   cypress-run:
     runs-on: Ubantu-latest
@@ -22,4 +22,4 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: firefox # Corrected the browser name
-          command: npm run 
+          command: npm run addToCart
