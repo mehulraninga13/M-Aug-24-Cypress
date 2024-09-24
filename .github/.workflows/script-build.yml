@@ -2,7 +2,7 @@ name: Sanity Build
 on: push
 jobs:
   cypress-run:
-    runs-on: Makbook Air
+    runs-on: Mac
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -11,7 +11,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          command: npm run test:addToCart
+          command: npm run addToCart
 
       - name: Cypress Test Report
       - uses: actions/upload-artifact@v4

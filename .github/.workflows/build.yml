@@ -2,7 +2,7 @@ name: Regression End-to-end tests
 on: push
 jobs:
   cypress-run:
-    runs-on: Makbook Air
+    runs-on: 
     steps:
       - name: Checkout
         uses: actions/checkout@v4

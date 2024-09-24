@@ -2,7 +2,7 @@ name: Browser Test Build
 on: push
 jobs:
   cypress-run:
-    runs-on: Makbook Air
+    runs-on: Mac
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -2,7 +2,7 @@ name: Browser Test Build
 on: push
 jobs:
   Add-To-Cart-run:
-    runs-on: Makbook Air
+    runs-on: Mac
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -11,7 +11,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          command: npm run test:addToCart
+          command: npm run addToCart
 
       - name: Cypress Test Report Add to Cart
       - uses: actions/upload-artifact@v4
@@ -20,7 +20,7 @@ jobs:
           path: cypress/reports/html 
 
   Reg-Flow-run:
-    runs-on: Makbook Air
+    runs-on: Mac
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          command: npm run test:registerFlow
+          command: npm run registerFlow
 
       - name: Cypress Test Report Reg Flow
         if: always()
