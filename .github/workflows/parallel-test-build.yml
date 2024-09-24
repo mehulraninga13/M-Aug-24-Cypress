@@ -1,6 +1,7 @@
 name: Browser Test Build
 
-on: push
+on: 
+  workflow_dispatch:
 
 jobs:
   Add-To-Cart-run:
