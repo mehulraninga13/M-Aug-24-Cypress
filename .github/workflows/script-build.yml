@@ -26,13 +26,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Add to Cart
+      - name: Run All test
         uses: cypress-io/github-action@v6
         with:
           command: npm run addToCart # Ensure the 'addToCart' script is defined in package.json
 
       - name: Generate Mochawesome Report
-        run: npm run addToCart # Ensure you have a posttest script that generates the report
+        run: npm run allTest # Ensure you have a posttest script that generates the report
 
       - name: Upload Cypress Test Report
         uses: actions/upload-artifact@v4
