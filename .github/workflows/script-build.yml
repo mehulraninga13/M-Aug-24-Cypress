@@ -1,7 +1,6 @@
-name: Script jobs - on demand
+name: Script jobs
 
-on: 
-  workflow_dispatch:
+on: push
 
 jobs:
   cypress-run:

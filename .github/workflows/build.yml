@@ -1,9 +1,6 @@
-name: Regression End-to-End Tests Schedule 9am UTC
+name: Regression End-to-End Tests
 
-on: 
-  schedule:
-    # Cron expression: Runs every day at midnight (00:00 UTC)
-    - cron: "0 9 * * *"
+on: push
 
 jobs:
   cypress-run:
@@ -25,3 +22,13 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npm run allTest
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+        
+         SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+         SLACK_ICON: https://github.com/rtCamp.png?size=48
+         SLACK_MESSAGE: 'Automation Test Report https://github.com/mehulraninga13/M-Aug-24-Cypress/actions/runs/${{github.run_id}}'
+         SLACK_TITLE: Cypress Automation 
+         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
