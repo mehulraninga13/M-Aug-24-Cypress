@@ -31,7 +31,7 @@ jobs:
           path: cypress/reports/html # Ensure this path matches where the Mochawesome report is generated
 
   Reg-Flow-run:
-    runs-on: Ubantu-latest # Use the same MacOS runner
+    runs-on: macos-latest # Use the same MacOS runner
 
     steps:
       - name: Checkout code
