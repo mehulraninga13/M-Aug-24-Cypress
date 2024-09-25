@@ -5,7 +5,7 @@ on:
 
 jobs:
   Add-To-Cart-run:
-    runs-on: Ubantu-latest # Correct MacOS runner syntax
+    runs-on: macos-latest # Correct MacOS runner syntax
 
     steps:
       - name: Checkout code
