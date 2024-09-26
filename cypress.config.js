@@ -6,11 +6,10 @@ module.exports = defineConfig({
   reporterOptions: {
     reportDir: "cypress/reports",
     overwrite: false,
-    html: true,
-    json: true,
-    reportFilename: "report"
+    html: false,
+    json: true
   },
-  
+
   env: {
     URL: "https://naveenautomationlabs.com/opencart/index.php?route=account/register",
   },
