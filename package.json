@@ -4,11 +4,14 @@
   "description": "Demonstrate the cypress framework.",
   "main": "index.js",
   "scripts": {
-    "allTest":"npx cypress run",
-    "addToCart": "npx cypress run --spec cypress/e2e/tests/addToCart.cy.js", 
-    "registerFlow":"npx cypress run --spec cypress/e2e/tests/registerTest.cy.js",
+    "allTest": "npx cypress run --reporter mochawesome",
+    "addToCart": "npx cypress run --spec cypress/e2e/tests/addToCart.cy.js",
+    "registerFlow": "npx cypress run --spec cypress/e2e/tests/registerTest.cy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  
+  
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mehulraninga13/M-Aug-24-Cypress.git"
@@ -22,7 +25,10 @@
   "devDependencies": {
     "@testing-library/cypress": "^10.0.2",
     "cypress": "^13.14.1",
-    "cypress-mochawesome-reporter": "^3.8.2"
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
   },
   "dependencies": {
     "aggregate-error": "^3.1.0",
