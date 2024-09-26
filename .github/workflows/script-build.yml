@@ -49,3 +49,40 @@ jobs:
         with:
               name: Cypress Videos (Failed Tests)
               path: cypress/videos/  # Path where videos are stored
+
+      - name: Send Slack Notification on Success
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{
+              "attachments": [
+                  {
+                      "fallback": "Cypress Tests Passed Successfully",
+                      "color": "good",
+                      "title": "Regression End-to-End Tests Status: SUCCESS",
+                      "text": "Regression End-to-End Tests have passed successfully.",
+                      "footer": "GitHub Actions",
+                      "ts": '"$(date +%s)"'
+                  }
+              ]
+          }' \
+          ${{ secrets.SLACK_WEBHOOK }}
+
+      - name: Send Slack Notification on Failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{
+              "attachments": [
+                  {
+                      "fallback": "Cypress Tests Failed",
+                      "color": "danger",
+                      "title": "Regression End-to-End Tests Status: FAILURE",
+                      "title_link": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                      "text": "Regression End-to-End Tests have failed. Please review the logs.",
+                      "footer": "GitHub Actions",
+                      "ts": '"$(date +%s)"'
+                  }
+              ]
+          }' \
+          ${{ secrets.SLACK_WEBHOOK }}
