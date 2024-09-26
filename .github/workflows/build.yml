@@ -54,7 +54,7 @@ jobs:
                       "ts": '"$(date +%s)"'
                   }
               ]
-          }' \
+          }
           ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Send Slack Notification on Failure
