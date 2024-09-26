@@ -23,6 +23,12 @@ jobs:
         with:
           command: npm run allTest
 
+      - name: Cypress Test Report - Add to Cart
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mochawesome HTML Report - All Test
+          path: cypress/reports/html # Ensure this path matches where the Mochawesome report is generated
+
       - name: Send Slack Notification on Success
         if: success()
         run: |
