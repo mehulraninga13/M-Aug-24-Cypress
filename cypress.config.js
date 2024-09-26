@@ -12,7 +12,7 @@ module.exports = defineConfig({
   },
 
   video: true, // Enable video recording
-  videoUploadOnPasses: false, // Only retain videos for failed tests
+  
   
   env: {
     URL: "https://naveenautomationlabs.com/opencart/index.php?route=account/register",
@@ -23,7 +23,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      
+
        // Delete video for passed tests
        on('after:spec', (spec, results) => {
         if (results && results.video && results.stats.failures === 0) {
