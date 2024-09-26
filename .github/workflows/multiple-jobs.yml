@@ -50,9 +50,18 @@ jobs:
         with:
           command: npm run registerFlow # Ensure this script is present in your package.json
 
-      - name: Cypress Test Report - Registration Flow
-        if: always() # Upload the artifact even if the test fails
+      - name: Uploading artifact  
+        uses: actions/upload-artifact@v4  
+        if: always()  
+        with:    
+            name: cypress-execution-report    
+            path: cypress/reports    
+            retention-days: 7
+  
+        
+      - name: Upload Failed Test Videos
+        if: failure()  # Only upload videos if tests fail
         uses: actions/upload-artifact@v4
         with:
-          name: Mochawesome HTML Report - Reg Flow
-          path: cypress/reports/html # Same path to your generated report
+              name: Cypress Videos (Failed Tests)
+              path: cypress/videos/  # Path where videos are stored

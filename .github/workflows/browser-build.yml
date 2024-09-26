@@ -27,10 +27,20 @@ jobs:
       - name: List reports for debugging
         run: ls -R cypress/reports/ 
         
-      - name: Cypress Test Report - Add to Cart
+      - name: Uploading artifact  
+        uses: actions/upload-artifact@v4  
+        if: always()  
+        with:    
+          name: cypress-execution-report    
+          path: cypress/reports    
+          retention-days: 7
+
+      
+      - name: Upload Failed Test Videos
+        if: failure()  # Only upload videos if tests fail
         uses: actions/upload-artifact@v4
         with:
-          name: Mochawesome HTML Report - Add to Cart
-          path: cypress/reports/html # Ensure this path matches where the Mochawesome report is generated
+            name: Cypress Videos (Failed Tests)
+            path: cypress/videos/  # Path where videos are stored
 
       

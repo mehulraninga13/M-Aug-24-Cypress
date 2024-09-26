@@ -31,8 +31,18 @@ jobs:
         with:
           command: npm run addToCart # Ensure the 'addToCart' script is defined in package.json
 
-      - name: Upload Cypress Test Report
+      - name: Uploading artifact  
+        uses: actions/upload-artifact@v4  
+        if: always()  
+        with:    
+            name: cypress-execution-report    
+            path: cypress/reports    
+            retention-days: 7
+  
+        
+      - name: Upload Failed Test Videos
+        if: failure()  # Only upload videos if tests fail
         uses: actions/upload-artifact@v4
         with:
-          name: Mochawesome HTML Report
-          path: cypress/reports/html
+              name: Cypress Videos (Failed Tests)
+              path: cypress/videos/  # Path where videos are stored
