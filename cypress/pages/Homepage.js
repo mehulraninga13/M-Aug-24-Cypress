@@ -8,7 +8,7 @@ export class Homepage{
         click_search:'.btn.btn-default.btn-lg',
         product:'a[href="https://naveenautomationlabs.com/opencart/image/cache/catalog/demo/macbook_1-228x228.jpg"]',
         addtocart:'[onclick="cart.add(\'43\', \'1\');"]',
-        sucessMessage:'.alert.alert-success.alert-dismissible'
+        sucessMessage:'.alert.alert-success.alert-dismissible oooooo'
         
     }
 
