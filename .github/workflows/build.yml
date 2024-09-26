@@ -31,14 +31,6 @@ jobs:
           path: cypress/reports    
           retention-days: 7
 
-           # Upload videos as artifacts only for failed tests
-      - name: Cypress Test Videos (Failed Tests)
-        if: failure() # This condition ensures only failed test videos are uploaded
-        uses: actions/upload-artifact@v4
-        with:
-         name: Cypress Videos (Failed Tests)
-         path: cypress/videos/  # Path where Cypress stores video recordings
-
       - name: Send Slack Notification on Success
         if: success()
         run: |
