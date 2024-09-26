@@ -27,12 +27,34 @@ jobs:
         if: success()
         run: |
           curl -X POST -H 'Content-type: application/json' \
-          --data '{"text": "Cypress Tests Passed Successfully!"}' \
+          --data '{
+              "attachments": [
+                  {
+                      "fallback": "Cypress Tests Passed Successfully",
+                      "color": "good",
+                      "title": "Cypress Test Status: SUCCESS",
+                      "text": "All Cypress tests have passed successfully.",
+                      "footer": "GitHub Actions",
+                      "ts": '"$(date +%s)"'
+                  }
+              ]
+          }' \
           ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Send Slack Notification on Failure
         if: failure()
         run: |
           curl -X POST -H 'Content-type: application/json' \
-          --data '{"text": "Cypress Tests Failed!"}' \
+          --data '{
+              "attachments": [
+                  {
+                      "fallback": "Cypress Tests Failed",
+                      "color": "danger",
+                      "title": "Cypress Test Status: FAILURE",
+                      "text": "Some Cypress tests have failed. Please review the logs.",
+                      "footer": "GitHub Actions",
+                      "ts": '"$(date +%s)"'
+                  }
+              ]
+          }' \
           ${{ secrets.SLACK_WEBHOOK }}
