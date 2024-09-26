@@ -18,26 +18,26 @@ module.exports = defineConfig({
 
   e2e: {
     setupNodeEvents(on, config) {
-      // Delete video for passed tests
-      on('after:spec', (spec, results) => {
-        if (results && results.video) {
-          // Check if all tests eventually passed
-          const allEventuallyPassed = results.tests.every((test) =>
-            test.attempts.some((attempt) => attempt.state === 'passed')
-          );
+    // Delete video for passed tests
+    on('after:spec', (spec, results) => {
+      if (results && results.video) {
+        // Check if all tests eventually passed
+        const allEventuallyPassed = results.tests.every((test) =>
+          test.attempts.some((attempt) => attempt.state === 'passed')
+        );
 
-          // If all tests passed, delete the video
-          if (allEventuallyPassed) {
-            fs.unlink(results.video, (err) => {
-              if (err) {
-                console.error('Failed to delete video:', err);
-              } else {
-                console.log('Deleted video:', results.video);
-              }
-            });
-          }
+        // If all tests passed, delete the video
+        if (allEventuallyPassed) {
+          fs.unlink(results.video, (err) => {
+            if (err) {
+              console.error('Failed to delete video:', err);
+            } else {
+              console.log('Deleted video:', results.video);
+            }
+          });
         }
-      });
+      }
+    });
 
       // Required for cypress-mochawesome-reporter
       require('cypress-mochawesome-reporter/plugin')(on);
