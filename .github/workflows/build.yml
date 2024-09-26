@@ -23,9 +23,16 @@ jobs:
         with:
           command: npm run allTest
 
-      - name: Slack Notification
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      - name: Send Slack Notification on Success
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text": "Cypress Tests Passed Successfully!"}' \
+          ${{ secrets.SLACK_WEBHOOK }}
+
+      - name: Send Slack Notification on Failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text": "Cypress Tests Failed!"}' \
+          ${{ secrets.SLACK_WEBHOOK }}
