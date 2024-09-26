@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Mochawesome HTML Report - All Tests
-          path: cypress/reports/ # Correct path where the report is generated
+          path: cypress/reports # Correct path where the report is generated
 
       - name: Send Slack Notification on Success
         if: success()
