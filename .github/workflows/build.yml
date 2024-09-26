@@ -23,11 +23,13 @@ jobs:
         with:
           command: npm run allTest
 
-      - name: Cypress Test Report - Upload Mochawesome Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: Mochawesome HTML Report - All Tests
-          path: cypress/reports # Correct path where the report is generated
+      - name: Uploading artifact  
+        uses: actions/upload-artifact@v4  
+        if: always()  
+        with:    
+          name: cypress-execution-report    
+          path: cypress/reports    
+          retention-days: 7
 
       - name: Send Slack Notification on Success
         if: success()
