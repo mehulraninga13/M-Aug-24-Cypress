@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 const fs = require('fs');
 
 module.exports = defineConfig({
-  reporter: "mochawesome",
+  reporter: "cypress-mochawesome-reporter",  // Use the cypress-mochawesome-reporter directly
   reporterOptions: {
     reportDir: "cypress/reports",
     overwrite: false,
@@ -10,24 +10,22 @@ module.exports = defineConfig({
     json: true,
   },
 
-  video: true, // Enable video recording
+  video: true,  // Enable video recording globally, but we will delete passed test videos
 
   env: {
     URL: "https://naveenautomationlabs.com/opencart/index.php?route=account/register",
   },
 
-  reporter: 'cypress-mochawesome-reporter',
-
   e2e: {
     setupNodeEvents(on, config) {
       // Delete video for passed tests
-      on('after:spec', (spec, results) => {  
+      on('after:spec', (spec, results) => {
         if (results && results.video) {
-          // Check if all tests eventually passed    
+          // Check if all tests eventually passed
           const allEventuallyPassed = results.tests.every((test) =>
             test.attempts.some((attempt) => attempt.state === 'passed')
           );
-          
+
           // If all tests passed, delete the video
           if (allEventuallyPassed) {
             fs.unlink(results.video, (err) => {
@@ -41,7 +39,7 @@ module.exports = defineConfig({
         }
       });
 
-      // Required for Mochawesome reporter
+      // Required for cypress-mochawesome-reporter
       require('cypress-mochawesome-reporter/plugin')(on);
     },
   },
