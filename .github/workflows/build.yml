@@ -32,8 +32,8 @@ jobs:
                   {
                       "fallback": "Cypress Tests Passed Successfully",
                       "color": "good",
-                      "title": "Cypress Test Status: SUCCESS",
-                      "text": "All Cypress tests have passed successfully.",
+                      "title": "Regression End-to-End Tests Status: SUCCESS",
+                      "text": "Regression End-to-End Tests have passed successfully.",
                       "footer": "GitHub Actions",
                       "ts": '"$(date +%s)"'
                   }
@@ -50,8 +50,9 @@ jobs:
                   {
                       "fallback": "Cypress Tests Failed",
                       "color": "danger",
-                      "title": "Cypress Test Status: FAILURE",
-                      "text": "Some Cypress tests have failed. Please review the logs.",
+                      "title": "Regression End-to-End Tests Status: FAILURE",
+                      "title_link": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                      "text": "Regression End-to-End Tests have failed. Please review the logs.",
                       "footer": "GitHub Actions",
                       "ts": '"$(date +%s)"'
                   }
