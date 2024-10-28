@@ -26,6 +26,7 @@ jobs:
       - name: Cypress run - Paralel Test for All test
         uses: cypress-io/github-action@v6
         with:
+          record: true
           parallel: true  
           command: npm run allTest # Make sure this script exists in your package.json
 
