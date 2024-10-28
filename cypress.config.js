@@ -2,6 +2,7 @@ const { defineConfig } = require("cypress");
 const fs = require('fs');
 
 module.exports = defineConfig({
+  projectId: 'rhuajh',
   reporter: "cypress-mochawesome-reporter",  // Use the cypress-mochawesome-reporter directly
   reporterOptions: {
     reportDir: "cypress/reports",
@@ -14,6 +15,7 @@ module.exports = defineConfig({
 
   env: {
     URL: "https://naveenautomationlabs.com/opencart/index.php?route=account/register",
+    
   },
 
   e2e: {

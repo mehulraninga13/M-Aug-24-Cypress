@@ -1,0 +1,36 @@
+name: paralle test execution
+
+on: 
+  push:
+
+jobs:
+  allTest:
+    runs-on: macos-latest # Correct MacOS runner syntax
+    strategy:
+        fail-fast: false
+        matrix:
+            containers: [1,2]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Ensure the correct version of Node.js is installed
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Cypress run - Paralel Test for All test
+        uses: cypress-io/github-action@v6
+        with:
+          parallel: true  
+          command: npm run allTest # Make sure this script exists in your package.json
+
+      - name: Cypress Test Report - All Test
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mochawesome HTML Report - All Test
+          path: cypress/reports/html # Ensure this path matches where the Mochawesome report is generated
