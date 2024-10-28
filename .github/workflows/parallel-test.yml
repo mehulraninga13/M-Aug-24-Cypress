@@ -1,15 +1,15 @@
-name: paralle test execution
+name: Parallel Test Execution
 
 on: 
   push:
 
 jobs:
   allTest:
-    runs-on: macos-latest # Correct MacOS runner syntax
+    runs-on: macos-latest
     strategy:
-        fail-fast: false
-        matrix:
-            containers: [1,2,3]
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3]
 
     steps:
       - name: Checkout code
@@ -19,21 +19,26 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20' # Ensure the correct version of Node.js is installed
-         
-      - name: Run Cypress tests in parallel
-        env: 
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-        run: npx cypress run --record --parallel --ci-build-id ${{ github.run_id }}  
 
       - name: Install dependencies
         run: npm install
 
-      - name: Cypress run - Paralel Test for All test
-        uses: cypress-io/github-action@v6
+      - name: Cache Cypress
+        uses: actions/cache@v3
         with:
-          record: true
-          parallel: true  
-          command: npm run allTest # Make sure this script exists in your package.json
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
+      - name: Install Cypress
+        run: npx cypress install
+
+      - name: Run Cypress tests in parallel
+        env: 
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        run: |
+          npx cypress run --record --parallel --ci-build-id ${{ github.run_id }}
 
       - name: Cypress Test Report - All Test
         uses: actions/upload-artifact@v4
