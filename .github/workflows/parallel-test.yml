@@ -19,6 +19,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20' # Ensure the correct version of Node.js is installed
+         
+      - name: Run Cypress tests in parallel
+        env: 
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        run: npx cypress run --record --parallel --ci-build-id ${{ github.run_id }}  
 
       - name: Install dependencies
         run: npm install
