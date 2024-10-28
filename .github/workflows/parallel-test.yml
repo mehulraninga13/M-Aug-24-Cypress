@@ -9,7 +9,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-            containers: [1,2]
+            containers: [1,2,3]
 
     steps:
       - name: Checkout code
