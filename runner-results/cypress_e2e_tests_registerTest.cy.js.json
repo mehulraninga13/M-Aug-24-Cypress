@@ -4,7 +4,7 @@
   "passes": 1,
   "pending": 0,
   "failures": 0,
-  "start": "2024-10-28T11:15:46.033Z",
-  "duration": 4157,
+  "start": "2024-10-29T04:16:09.650Z",
+  "duration": 4387,
   "file": "cypress/e2e/tests/registerTest.cy.js"
 }

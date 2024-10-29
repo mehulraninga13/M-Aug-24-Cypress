@@ -4,7 +4,7 @@
   "passes": 1,
   "pending": 0,
   "failures": 0,
-  "start": "2024-10-28T11:15:38.697Z",
-  "duration": 5225,
+  "start": "2024-10-29T04:16:02.500Z",
+  "duration": 5016,
   "file": "cypress/e2e/tests/addToCart.cy.js"
 }
