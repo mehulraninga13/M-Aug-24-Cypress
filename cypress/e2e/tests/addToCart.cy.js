@@ -11,7 +11,6 @@ describe("Add to cart flow",()=>{
 
         cy.login(testData.login.username, testData.login.password)
         
-        
     })
 
     it("add to cart",()=>{
